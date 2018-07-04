@@ -1,0 +1,37 @@
+resources:
+  - name: redis_image
+    type: image
+    integration: dockerhub-ric03uec
+    pointer:
+      sourceName: "library/redis"
+    seed:
+      versionName: latest
+
+  - name: nginx_image
+    type: image
+    integration: dockerhub-ric03uec
+    pointer:
+      sourceName: "library/nginx"
+    seed:
+      versionName: latest
+
+# Default docker option used to run the container is -d, containers MUST run in
+# background else, they'll block the calling process
+# Other options can be configured from yml
+jobs:
+  - name: link_images
+    type: runSh
+    links:
+      - resource: redis_image
+        name: "my-redis"
+        options: "--publish 6379:6379"
+      - resource: nginx_image
+        name: "my-nginx"
+        options: "--publish 8080:80"
+    steps:
+      - TASK:
+          script:
+            - uname -a
+            - echo "Response from nginx container"
+            - curl -XGET http://my-nginx:8080
+            - echo "=============================="
