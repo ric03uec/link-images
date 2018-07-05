@@ -33,6 +33,6 @@ jobs:
           script:
             - uname -a
             - echo "Response from nginx container"
-            - sleep 500
+            - sleep 30
             - curl -XGET http://my-nginx:80
             - echo "=============================="
