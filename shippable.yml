@@ -27,7 +27,7 @@ jobs:
         options: "--publish 6379:6379"
       - resource: nginx_image
         name: "my-nginx"
-        options: "--publish 8080:80"
+        options: "--publish 8181:80"
     steps:
       - TASK:
           script:
