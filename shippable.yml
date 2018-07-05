@@ -34,5 +34,5 @@ jobs:
             - uname -a
             - echo "Response from nginx container"
             - sleep 500
-            - curl -XGET http://my-nginx:8181
+            - curl -XGET http://my-nginx:80
             - echo "=============================="
