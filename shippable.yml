@@ -22,10 +22,13 @@ jobs:
   - name: link_images
     type: runSh
     links:
-      - resource: redis_image
+      # TODO: the image tags and name should be evaluated from "resource"
+      - image: library/redis
+        tag: latest
         name: "my-redis"
         options: "--publish 6379:6379"
-      - resource: nginx_image
+      - image: library/nginx
+        tag: latest
         name: "my-nginx"
         options: "--publish 8181:80"
     steps:
