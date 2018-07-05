@@ -21,6 +21,7 @@ resources:
 jobs:
   - name: link_images
     type: runSh
+    allowPublicAccess: true
     links:
       # TODO: the image tags and name should be evaluated from "resource"
       - image: library/consul
