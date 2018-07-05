@@ -3,7 +3,7 @@ resources:
     type: image
     integration: dockerhub-ric03uec
     pointer:
-      sourceName: "library/redis"
+      sourceName: "library/consul"
     seed:
       versionName: latest
 
@@ -23,10 +23,10 @@ jobs:
     type: runSh
     links:
       # TODO: the image tags and name should be evaluated from "resource"
-      - image: library/redis
+      - image: library/consul
         tag: latest
-        name: "my-redis"
-        options: "--publish 6379:6379"
+        name: "my-consul"
+        options: "--publish 8500:8500"
       - image: library/nginx
         tag: latest
         name: "my-nginx"
@@ -39,4 +39,3 @@ jobs:
             - sleep 30
             - curl -XGET http://my-nginx:80
             - echo "=============================="
-            - echo "------------------------------"
