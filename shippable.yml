@@ -39,6 +39,6 @@ jobs:
             - sleep 30
             - curl -XGET http://my-nginx:80
             - echo "=============================="
-            - echo "Respose from consul container
+            - echo "Respose from consul container"
             - curl -XGET http://my-consul:8500
             - echo "=============================="
